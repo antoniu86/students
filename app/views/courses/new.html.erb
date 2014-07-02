@@ -10,6 +10,7 @@
       </ul>
     </div>
 <% end %>
+
 <%= form_for(@student_course, url: {action: 'create', method: :post}) do |f| %>
   <%= f.label 'Course' %>
   <%= select('student_course', 'course_id', @courses.collect{|course| [course.name, course.id]}) %>

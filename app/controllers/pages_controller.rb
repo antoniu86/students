@@ -20,6 +20,10 @@ class PagesController < ApplicationController
   end
   
   def contact
+    @contact = Contact.new
+    
+    info
+    
     @slug = 'contact'
     page_content @slug
   end
@@ -29,5 +33,13 @@ class PagesController < ApplicationController
     
     @title = page.title
     @content = page.content.html_safe
+  end
+  
+  def info
+    if params[:alert]
+      flash.now[:alert] = 'Contactarea nu a putut fi transmisa!'
+    elsif params[:notice]
+      flash.now[:notice] = 'Contactare transmisa cu success!'
+    end
   end
 end

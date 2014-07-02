@@ -1,5 +1,4 @@
 class Student < ActiveRecord::Base
-
   has_many :addresses, as: :addressable
   has_many :students_courses
   has_many :courses, through: :students_courses
@@ -15,5 +14,4 @@ class Student < ActiveRecord::Base
   def name
     "#{first_name} #{last_name}"
   end
-
 end

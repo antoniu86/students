@@ -10,6 +10,7 @@
       </ul>
     </div>
 <% end %>
+
 <%= form_for @student do |f| %>
   <%= f.label 'First name' %>
   <%= f.text_field :first_name %>
@@ -23,8 +24,18 @@
   <%= f.fields_for :addresses do |fa| %>
     <%= fa.label 'Country' %>
     <%= fa.text_field :country %>
+    <br/>
     <%= fa.label 'City' %>
     <%= fa.text_field :city %>
+    <br/>
+    <%= fa.label 'Street' %>
+    <%= fa.text_field :street %>
+    <br/>
+    <%= fa.label 'No.' %>
+    <%= fa.text_field :number %>
+    <br/>
+    <%= fa.label 'ZipCode' %>
+    <%= fa.text_field :zipcode %>
   <% end %>
   <br/>
   <%= f.submit %>

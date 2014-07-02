@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+function load_ajax(t) {
+  var url = jQuery(t).attr('href');
+  
+  jQuery.facebox({ ajax: url });
+}

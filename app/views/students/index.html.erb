@@ -1,17 +1,28 @@
-<table>
+<div class="row">
+<table class="table table-striped table-hover ">
   <tr>
-    <th>Name</th>
+    <th>#</th>
+    <th>Nume</th>
     <th>Email</th>
+    <th>Cursuri</th>
+    <th width="170">Actiuni</th>
   </tr>
   <% @students.each do |student| %>
     <tr>
+      <td><%= student.id %></td>
       <td><%= student.name %></td>
       <td><%= student.email %></td>
-      <td><%= link_to 'Courses', student_courses_path(student) %></td>
-      <td><%= link_to 'Edit', edit_student_path(student) %></td>
-      <td><%= link_to 'Delete', student, method: :delete, confirm: 'Are you sure?' %></td>
+      <td>
+        <%= student.courses.map {|c| c.name} .join ', ' %>
+      </td>
+      <td>
+        <span class="label label-default"><%= link_to 'Cursuri', student_courses_path(student) %></span>
+        <span class="label label-info"><%= link_to 'Modifica', edit_student_path(student), style: 'color:white', onclick: 'load_ajax(this); return false;' %></span>
+        <span class="label label-danger"><%= link_to 'Sterge', student, method: :delete, style: 'color:white', confirm: 'Are you sure?' %></span>
+      </td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to 'Add student', new_student_path %>
+<span class="label label-success"><%= link_to 'Adauga student', new_student_path, style: 'color:white', onclick: 'load_ajax(this); return false;' %></span>
+</div>

@@ -6,28 +6,34 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    
+    render layout: false
   end
 
   def create
     @student = Student.new(student_params)
+    
     if @student.save
+      @student.addresses << Address.new
       redirect_to students_path
     else
-      render :new
+      redirect_to action: nil
     end
   end
 
   def edit
     @student = Student.find(params[:id])
-    @student.addresses << Address.new
+    
+    render layout: false
   end
 
   def update
     @student = Student.find(params[:id])
+    
     if @student.update(student_params)
       redirect_to students_path
     else
-      render :edit
+      redirect_to action: nil
     end
   end
 
@@ -36,6 +42,14 @@ class StudentsController < ApplicationController
     @student.destroy
     redirect_to students_path
   end
+  
+  def breadcrumbs
+    if action_name != 'index'
+      @breadcrumbs = "<li><a href='/'>Home</a></li><li><a href='/students'>Students</a></li><li class='active'>#{action_name}</li>".html_safe
+    else
+      @breadcrumbs = "<li><a href='/'>Home</a></li><li class='active'>Students</li>".html_safe
+    end
+  end
 
   private
 
@@ -43,7 +57,7 @@ class StudentsController < ApplicationController
       params.required(:student).permit(:email,
         :first_name,
         :last_name,
-        addresses_attributes: [:country, :city]
+        addresses_attributes: [:country, :city, :street, :number, :zipcode]
       )
     end
 

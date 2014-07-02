@@ -3,6 +3,8 @@ Students::Application.routes.draw do
     resources :courses
   end
   
+  resources :contacts
+  
   root 'pages#index'
   
   get ':action' => 'pages'
