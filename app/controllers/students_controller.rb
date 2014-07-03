@@ -45,9 +45,9 @@ class StudentsController < ApplicationController
   
   def breadcrumbs
     if action_name != 'index'
-      @breadcrumbs = "<li><a href='/'>Home</a></li><li><a href='/students'>Students</a></li><li class='active'>#{action_name}</li>".html_safe
+      @breadcrumbs = "<li><a href='/'>Home</a></li><li><a href='/students'>Studenti</a></li><li class='active'>#{action_name}</li>".html_safe
     else
-      @breadcrumbs = "<li><a href='/'>Home</a></li><li class='active'>Students</li>".html_safe
+      @breadcrumbs = "<li><a href='/'>Home</a></li><li class='active'>Studenti</li>".html_safe
     end
   end
 

@@ -21,6 +21,10 @@ class ContactsController < ApplicationController
     redirect_to action: nil
   end
   
+  def breadcrumbs
+    @breadcrumbs = "<li><a href='/'>Home</a></li><li class='active'>Contactari</li>".html_safe
+  end
+  
   private
   
   def send_contact
