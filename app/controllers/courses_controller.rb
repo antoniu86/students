@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @student = Student.find(params[:student_id])

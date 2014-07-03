@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :contact]
+  
   def index
     @slug = 'index'
     page_content @slug
