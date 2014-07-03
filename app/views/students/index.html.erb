@@ -16,7 +16,7 @@
         <%= student.courses.map {|c| c.name} .join ', ' %>
       </td>
       <td>
-        <span class="label label-default"><%= link_to 'Cursuri', student_courses_path(student) %></span>
+        <span class="label label-default"><%= link_to 'Cursuri', student_courses_path(student), onclick: 'load_ajax_courses(this); return false;' %></span>
         <span class="label label-info"><%= link_to 'Modifica', edit_student_path(student), style: 'color:white', onclick: 'load_ajax(this); return false;' %></span>
         <span class="label label-danger"><%= link_to 'Sterge', student, method: :delete, style: 'color:white', confirm: 'Are you sure?' %></span>
       </td>

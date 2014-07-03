@@ -17,7 +17,13 @@
 
 
 function load_ajax(t) {
-  var url = jQuery(t).attr('href');
+	var url = jQuery(t).attr('href');
+	
+	jQuery.facebox({ ajax: url });
+}
+
+function load_ajax_courses(t) {
+	var url = jQuery(t).attr('href') + '/new';
   
-  jQuery.facebox({ ajax: url });
+	jQuery.facebox({ ajax: url });
 }

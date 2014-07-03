@@ -10,13 +10,15 @@ class CoursesController < ApplicationController
     @courses = Course.all
     @student_course = StudentsCourse.new
     @student_course.student = @student
+    
+    render layout: false
   end
 
   def create
     @student_course = StudentsCourse.new(student_course_params)
     @student_course.student_id = params[:student_id]
     @student_course.save!
-    redirect_to student_courses_path
+    redirect_to students_path
   end
 
   private
